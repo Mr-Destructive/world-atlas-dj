@@ -1,0 +1,58 @@
+body{
+	background-color:#030563;
+}
+h1, h2 {
+  text-align:center;
+  color:#00ffff;
+}
+
+#name{
+	position:absolute;
+	left:40%;
+	top:30%;
+}
+#logo{
+	height:10em;
+	width:10em;
+	position:absolute;
+	left:10%;
+	top:5%;
+}
+#hostn{
+	position:absolute;
+	top:50%;
+	left:35%;
+	height:2.4em;
+	width:11em;
+	color:green;
+	font-size:1.4em;
+}
+#code{
+	color:yellow;
+	position:absolute;
+	font-size:40px;
+	top:40%;
+	left:40%;
+}
+.button{
+	height:3em;
+	width:10em;
+	font-size:1.2em;
+	color:white;
+	background-color :#001198;
+}
+#roombutton{
+	position:absolute;
+	top:53%;
+	left:43%;
+}
+#join{
+	position:absolute;
+	top:63%;
+	left:43%;
+}
+#joincode{
+	position:absolute;
+	top:73%;
+	left:43%;
+}

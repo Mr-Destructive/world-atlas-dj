@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>WORLD ATLAS</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static "css/style.css" %}" >
+	<link rel="icon" href="{% static "img/W.png" %}">
+	
+</head>
+<body>
+        <h1>WORLD ATLAS</h1>
+	<h2>The geographical game.</h2>
+	<nav>
+	<ul>
+		<li class="navlinks" id="home"><a href="" >Home</a></li>
+		<li class="navlinks" id="play"><a href="{{"play"}}" >Play</a></li>
+	</ul>
+	</nav>
+	{% block body %}
+	
+	{% endblock %}
+</body>
+</html>

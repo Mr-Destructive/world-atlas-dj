@@ -1,0 +1,9 @@
+{% extends "home/index.html" %}
+
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static "css/play/style.css" %}" >
+<a href="{{"bot"}}" id = "botbutton">Bot</a>
+<p id="or"> or </p>
+<a href="{{"room"}}" id="multp">Multiplayer</a>
+{% endblock %}
