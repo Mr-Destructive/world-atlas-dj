@@ -83,8 +83,6 @@ TEMPLATES = [
 
 ASGI_APPLICATION = 'WorldAtlas.routing.application'
 
-CELERY_BROKER_URL = os.environ['REDIS_URL']
-CELERY_RESULT_BACKEND = os.environ['REDIS_URL']
 
 CHANNEL_LAYERS = {
     "default": {
