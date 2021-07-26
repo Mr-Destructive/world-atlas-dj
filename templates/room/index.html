@@ -21,7 +21,7 @@
 		for ( var i = 0; i < 5; i++ ) {
 			result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
 		}
-		url = "ws://world-atlas-dj.herokuapp.com/room/"+result;
+		url = "http://world-atlas-dj.herokuapp.com/room/"+result;
 	        document.getElementById("code").innerHTML = result	
 		
 document.getElementById("join").onclick = function(e){
