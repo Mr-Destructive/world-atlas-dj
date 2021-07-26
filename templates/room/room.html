@@ -24,7 +24,7 @@ const chatSocket = new WebSocket('ws://' + window.location.host + '/room/'+ room
 
 chatSocket.onmessage = function(e) {
     const data = JSON.parse(e.data);
-	let url = "http://127.0.0.1:8000/api/" + data["message"];
+	let url = "http://world-atlas.herokuapp.com/api/" + data["message"];
     fetch(url, {
 	    method: 'GET',
 	    headers:{
