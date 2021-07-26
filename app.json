@@ -1,0 +1,19 @@
+{
+    "name": "Django",
+    "repository": "https://github.com/Mr-Destructive/world-atlas-dj/",
+    "env": {
+      "DJANGO_SECRET_KEY": {
+        "description": "django-insecure-&m%9rgy00!wmu9cd7sxr)i&p@y6x6^$j9wj&8_#c*3$)z-zi0r"
+      }
+    },
+    "buildpacks": [
+      {
+        "url": "heroku/python"
+      }
+    ],
+    "addons": [
+        {
+            "plan": "heroku-redis"
+        }
+    ]
+  }
