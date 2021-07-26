@@ -20,7 +20,7 @@ const user_username = JSON.parse(document.getElementById("user_username").textCo
 const roomName = JSON.parse(document.getElementById('room-name').textContent);
 const messageInputDom = document.querySelector('#place');
 let plc,place,pt=0;
-const chatSocket = new WebSocket('ws://' + window.location.host + '/room/'+ roomName + '/');
+const chatSocket = new WebSocket('wss://' + window.location.host + '/room/'+ roomName + '/');
 
 chatSocket.onmessage = function(e) {
     const data = JSON.parse(e.data);
