@@ -9,14 +9,10 @@
     text-decoration: none;
     background-color:#00dd11;
     color:#0002dd;
+    padding-top:5px;
+    padding-left:15px;
+    padding-right:15px;
 }
-#or{
-    position:absolute;
-    top:47%;
-    left:48.5%;
-    color:white;
-    font-size:2.3em;
-}    
 #multp{
     position:absolute;
     top:60%;
@@ -28,6 +24,19 @@
     text-decoration: none;
     background-color:#00dd11;
     color:#0002dd;
+    padding-top:5px;
+    padding-left:15px;
+    padding-right:15px;
+}
+#inp
+{
+    position:absolute;
+    top:63%;
+    left:55%;
+    background-color:#ff3300;
+    color:#ffffff;
+    padding:7px;
+    font-size:25px;
 }
 
 #botbutton:hover{
@@ -39,3 +48,4 @@
 	background-color:#0002dd;
 	color:#00dd11;
 }
+

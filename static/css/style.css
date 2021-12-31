@@ -6,7 +6,6 @@ a{
 	color:#ffffff;
 	text-decoration:none;
 	font-weight:700;
-
 }
 h1, h2 {
 	text-align:center;
@@ -63,7 +62,6 @@ a:hover{
 	height:40px;
 	width:60%;
 	font-size:35px;
-	z-index:0;
 }
 #submit{
 	position:absolute;
@@ -85,7 +83,7 @@ a:hover{
 }
 #ply{
 	position:absolute;
-	top:36%;
+	top:26%;
 	left:55%;
 	font-size:50px;
 	color:#44ee00;
@@ -104,7 +102,7 @@ a:hover{
 	scrollbar-width:none;}
 #info{
 	position:absolute;
-	top:175px;
+	top:475px;
 	left:150px;
 	font-size:45px;
 	color:#66cc44;
@@ -117,4 +115,60 @@ a:hover{
 	color:#f8fc00;
 }
 
+#tab
+{
+    position:absolute;
+    top:36%;
+    left:30%;
+    color:#ff6600;
+	overflow-y:scroll;
+	height:300px;
+    display:block;
+}
+#tab >tbody >tr >td
+{
+    padding-left:10px;
+    font-size:50px;
+    text-align:left;
+    width:20%; 
+}
 
+#tab::-webkit-scrollbar{
+	display:none;}
+#tab{
+	-ms-overflow-style:none;
+	scrollbar-width:none;}
+/* The alert message box */
+.alert {
+  visibility:hidden;
+  padding: 5px;
+  background-color: #00dd00; /* Red */
+  color: #0014ff;
+  margin-bottom: 15px;
+  position:absolute;
+  top:30%;
+  left:12.5%;
+  width:75%;
+  font-size:40px;
+  font-weight:600;
+}
+
+/* The close button */
+.closebtn {
+  position:absolute;
+  top:30%;
+  left:90%;
+  margin-left: 15px;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  position:absolute;
+  left:90%;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
