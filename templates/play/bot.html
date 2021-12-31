@@ -1,7 +1,7 @@
 {% extends 'home/index.html' %}
 {% load static %}
 {% block body %}
-<button onclick="toss()">Start</button>
+<button onclick="toss()" id="start">Start</button>
   <input type="text" placeholder="Place" autocomplete="off" id="place"/>
         <button id="submit" >Send ></button>
         <!--
@@ -13,8 +13,8 @@
 	<p id="info"></p>
     <table id="tab">
     </table>
-<div class="alert">
-</div>
+<div class="alert"> </div>
+<div class="points">Points </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="{% static "js/script.js" %}"></script>
 {% endblock %}

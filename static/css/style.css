@@ -172,3 +172,25 @@ a:hover{
 .closebtn:hover {
   color: black;
 }
+
+#start{
+    position:absolute;
+    left:40%;
+    top:45%;
+    height:10%;
+    width:20%;
+    font-size:40px;
+}
+.points
+{
+    visibility:visible;
+    position:absolute;
+    left:75%;
+    top:75%;
+    background-color:#0014ff;
+    color:white;
+    font-size:30px;
+    padding:10px;
+}
+
+

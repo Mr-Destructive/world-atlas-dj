@@ -58,6 +58,7 @@ function scroller(){
 
 function toss()
 {
+    document.getElementById("start").style.visibility="hidden";
     let toss=Math.floor(Math.random()*2);
     console.log(toss);
     document.getElementById("info").innerHTML='';
@@ -221,6 +222,7 @@ function validate(place, _callback)
     if(exists === 1 && count === dictlen && repeated === 0){
         valid=true;
         add_to_list(place);
+        document.querySelector(".points").innerHTML = points + " Points";
     }
 
     else{
@@ -228,7 +230,7 @@ function validate(place, _callback)
         win.innerHTML="You Lost";
         win.style.backgroundColor="#ff4436";
         win.style.visibility="visible";
-        document.getElementById(".closebtn").style.visibility="visible";
+        document.getElementById("start").style.visibility="visible";
     }
     return valid;
     })
@@ -318,6 +320,8 @@ function validate_comp(place)
 
     else{
         document.getElementById("info").innerHTML = "You Won!!";
+        win.style.backgroundColor = "#00dd00";
+        win.innerHTML="You Won!"
         win.style.visibility="visible";
         valid=false;
     }
