@@ -3,7 +3,7 @@
 {% block body %}
 <button onclick="toss()" id="start">Start</button>
   <input type="text" placeholder="Place" autocomplete="off" id="place"/>
-        <button id="submit" >Send ></button>
+        <button id="submit" >Send </button>
         <!--
 	<p id="com"></p>
 	<p id="ply"></p>
@@ -13,7 +13,9 @@
 	<p id="info"></p>
     <table id="tab">
     </table>
-<div class="alert"> </div>
+<div class="alert">
+</div>
+<span class="closebtn" >&times;</span>
 <div class="points">Points </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="{% static "js/script.js" %}"></script>

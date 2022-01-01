@@ -3,10 +3,21 @@ let row;
 let rowcount = 0;
 let points,com,ply;
 let win = document.querySelector(".alert");
-document.getElementById("submit").addEventListener("click",()=>{
-    plyplace= document.getElementById("place").value;	
-    plyplace=plyplace.toLowerCase();
+let pointdiv = document.querySelector(".points");
+let info = document.querySelector("#info");
+let placeinp = document.querySelector("#place");
+let start = document.getElementById("start");
+placeinp.disabled=true;
 
+document.getElementById("submit").addEventListener("click",()=>{
+
+    placeinp.disabled=true;
+    plyplace= placeinp.value;	
+    if(plyplace == ''){
+        placeinp.disabled=false;
+    }
+    else{
+    plyplace=plyplace.toLowerCase();
 
     validate(plyplace, ()=> {
     
@@ -20,13 +31,14 @@ document.getElementById("submit").addEventListener("click",()=>{
         ply = row.insertCell(1);
     }
         ply.innerHTML = plyplace;
-        document.getElementById("place").value = "";
+        placeinp.value = "";
         scroller();
         plylast = getLast(plyplace);
         botplace = givePlace(plylast);
         botlast = getLast(botplace);
     })
     console.log(points);
+    }
 });
 
 document.getElementById("place").addEventListener("keyup",function(event){
@@ -34,7 +46,10 @@ document.getElementById("place").addEventListener("keyup",function(event){
 		event.preventDefault();
 		document.getElementById("submit").click();
 	}});
-
+document.querySelector(".closebtn").addEventListener("click", () => {
+    document.querySelector(".alert").style.display="none";
+    document.querySelector(".closebtn").style.display="none";
+})
 let place="";
 let a=[],b=[],c=[],e=[],f=[],d=[],g=[],h=[],i=[],j=[],k=[],l=[],m=[];
 let n=[],o=[],p=[],q=[],r=[],s=[],t=[],u=[],v=[],w=[],x=[],y=[],z=[];
@@ -45,7 +60,7 @@ coms = document.getElementById('tab');
 observer = new MutationObserver(function(mutationsList, observer) {
     complast = getLast(place);
     if(points > 0){
-    document.getElementById("info").innerHTML = "Enter a Place beginning with : " + complast;
+    info.innerHTML = "Enter a Place beginning with : " + complast;
     }
 });
 
@@ -58,13 +73,20 @@ function scroller(){
 
 function toss()
 {
-    document.getElementById("start").style.visibility="hidden";
+    start.innerHTML="Restart";
+    start.style.top="28%";
+    start.style.left="40%";
+    win.style.visibility="hidden";
+    document.querySelector(".closebtn").style.visibility="hidden";
+    info.style.visibility="visible";
+    placeinp.disabled=true;
     let toss=Math.floor(Math.random()*2);
     console.log(toss);
-    document.getElementById("info").innerHTML='';
+    info.innerHTML='';
     var Parent = document.getElementById('tab');
     rowcount = 0;
     points=0;
+    pointdiv.innerHTML = "Points : " + points;
     while(Parent.hasChildNodes())
     {
        Parent.removeChild(Parent.firstChild);
@@ -83,15 +105,16 @@ function play(toss)
 {
     if( toss === 0)
     {
-        document.getElementById("info").innerHTML='The Bot enters the place first';
+        info.innerHTML='The Bot enters the place first';
+        placeinp.disabled=true;
         let letter ="abcdefghijklmnopqrstuvwxyz";
 		let random_index=Math.floor(Math.random()*26);
 		let random_char=letter[random_index];
 		botplace=givePlace(random_char);
-		//validate(botplace);
     }
     else{
-        document.getElementById("info").innerHTML='You will enter the place first';
+        info.innerHTML='You will enter the place first';
+        placeinp.disabled=false;
     }
 }
 
@@ -116,7 +139,8 @@ function givePlace(letter)
             com.innerHTML = place;
             botlast=getLast(place);
             scroller();
-            document.getElementById("info").innerHTML="Enter a Place beginning with : " + botlast;
+            placeinp.disabled=false;
+            info.innerHTML="Enter a Place beginning with : " + botlast;
         }
         return place;
     })
@@ -222,15 +246,22 @@ function validate(place, _callback)
     if(exists === 1 && count === dictlen && repeated === 0){
         valid=true;
         add_to_list(place);
-        document.querySelector(".points").innerHTML = points + " Points";
+        placeinp.disabled=false;
+        placeinp.focus();
+        pointdiv.innerHTML = "Points : " + points;
     }
 
     else{
         valid=false;
+        placeinp.disabled=true;
         win.innerHTML="You Lost";
         win.style.backgroundColor="#ff4436";
         win.style.visibility="visible";
-        document.getElementById("start").style.visibility="visible";
+        document.querySelector(".closebtn").style.visibility="visible";
+        info.style.visibility="hidden";
+        start.style.top= "75%";
+        start.innerHTML= "Restart";
+        start.style.visibility="visible";
     }
     return valid;
     })
@@ -319,10 +350,16 @@ function validate_comp(place)
     }
 
     else{
-        document.getElementById("info").innerHTML = "You Won!!";
-        win.style.backgroundColor = "#00dd00";
+        placeinp.disabled=true;
+        info.innerHTML = "You Won!!";
+        win.style.backgroundColor = "#00dd14";
         win.innerHTML="You Won!"
         win.style.visibility="visible";
+        document.querySelector(".closebtn").style.visibility="visible";
+        start.style.top= "75%";
+        start.innerHTML= "Restart";
+        start.style.visibility="visible";
+        info.style.visibility = "hidden";
         valid=false;
     }
     return valid;
