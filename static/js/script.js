@@ -7,8 +7,10 @@ let pointdiv = document.querySelector(".points");
 let info = document.querySelector("#info");
 let placeinp = document.querySelector("#place");
 let start = document.getElementById("start");
+let submit = document.getElementById("submit");
 let botlast;
 placeinp.disabled=true;
+submit.disabled=true;
 
 document.getElementById("submit").addEventListener("click",()=>{
 
@@ -16,14 +18,12 @@ document.getElementById("submit").addEventListener("click",()=>{
     plyplace= placeinp.value;	
     if(plyplace == ''){
         placeinp.disabled=false;
-
     }
     else{
     plyplace=plyplace.toLowerCase();
 
     validate(plyplace, ()=> {
     
-    points+=1;
     row = tab.insertRow(rowcount);
     if(toss === 0){
         ply = row.insertCell(0);
@@ -38,6 +38,7 @@ document.getElementById("submit").addEventListener("click",()=>{
         plylast = getLast(plyplace);
         botplace = givePlace(plylast);
         botlast = getLast(botplace);
+        submit.disabled=false;
     })
     }
 });
@@ -116,6 +117,7 @@ function play(toss)
         info.innerHTML='You will enter the place first';
         placeinp.disabled=false;
     }
+    submit.disabled=false;
 }
 
 // gets last character of the given place
@@ -153,8 +155,13 @@ function givePlace(letter)
 function validate(place, _callback)
 {
     let first = place[0];
+    if(points !== 0 ){
+        if(first !== botlast){
+            last=1;
+        }
+    }
     let placelist = [];
-    let exists = 0, repeated = 0, count = 0;
+    let exists = 0, repeated = 0, count = 0, last=0;
     let url = "https://world-atlas-api.herokuapp.com/list/"+first;
     _callback(axios.get(url) 
     .then(function (response)
@@ -240,22 +247,21 @@ function validate(place, _callback)
             count+=1;
         }
     }
-    if(first != botlast)
-    {
-        exists =0;
-    }
-
-    if(exists === 1 && count === dictlen && repeated === 0){
+    
+    if(exists === 1 && count === dictlen && repeated === 0 && last == 0){
         valid=true;
         add_to_list(place);
         placeinp.disabled=false;
+        submit.disabled=false;
         placeinp.focus();
+        points+=1;
         pointdiv.innerHTML = "Points : " + points;
     }
 
     else{
         valid=false;
         placeinp.disabled=true;
+        submit.disabled=true;
         win.innerHTML="You Lost";
         win.style.backgroundColor="#ff4436";
         win.style.visibility="visible";
