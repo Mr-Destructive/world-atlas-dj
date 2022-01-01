@@ -7,6 +7,6 @@ def home(request):
     return render(request,'home/index.html')
 def bot(request):
     return render(request,'play/bot.html')
+def multiplayer(request):
+    return render(request, 'play/multiplayer.html')
 
-def room(request):
-    return render(request,'room/room.html')

@@ -124,10 +124,13 @@ a:hover{
 }
 
 #tab::-webkit-scrollbar{
-	display:none;}
+	display:none;
+}
+
 #tab{
 	-ms-overflow-style:none;
-	scrollbar-width:none;}
+	scrollbar-width:none;
+}
 
 .alert {
     visibility:hidden;

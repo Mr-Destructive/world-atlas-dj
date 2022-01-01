@@ -7,6 +7,7 @@ let pointdiv = document.querySelector(".points");
 let info = document.querySelector("#info");
 let placeinp = document.querySelector("#place");
 let start = document.getElementById("start");
+let botlast;
 placeinp.disabled=true;
 
 document.getElementById("submit").addEventListener("click",()=>{
@@ -15,14 +16,15 @@ document.getElementById("submit").addEventListener("click",()=>{
     plyplace= placeinp.value;	
     if(plyplace == ''){
         placeinp.disabled=false;
+
     }
     else{
     plyplace=plyplace.toLowerCase();
 
     validate(plyplace, ()=> {
     
-        points+=1;
-        row = tab.insertRow(rowcount);
+    points+=1;
+    row = tab.insertRow(rowcount);
     if(toss === 0){
         ply = row.insertCell(0);
     }
@@ -37,7 +39,6 @@ document.getElementById("submit").addEventListener("click",()=>{
         botplace = givePlace(plylast);
         botlast = getLast(botplace);
     })
-    console.log(points);
     }
 });
 
@@ -81,7 +82,6 @@ function toss()
     info.style.visibility="visible";
     placeinp.disabled=true;
     let toss=Math.floor(Math.random()*2);
-    console.log(toss);
     info.innerHTML='';
     var Parent = document.getElementById('tab');
     rowcount = 0;
@@ -133,7 +133,6 @@ function givePlace(letter)
     .then(function (response)
     {
         place = response["data"][letter];
-        console.log(place);
         if(validate_comp(place)){
             rowcount+=1;
             com.innerHTML = place;
@@ -241,8 +240,11 @@ function validate(place, _callback)
             count+=1;
         }
     }
+    if(first != botlast)
+    {
+        exists =0;
+    }
 
-    //console.log(exists + " " + count + " " + dictlen + " " + repeated);
     if(exists === 1 && count === dictlen && repeated === 0){
         valid=true;
         add_to_list(place);
@@ -268,6 +270,7 @@ function validate(place, _callback)
     .catch(function (error) {
         console.log(error);
     }))
+    
 }
 
 function validate_comp(place)
@@ -343,7 +346,6 @@ function validate_comp(place)
         }
     }
 
-    //console.log(exists + " " + count + " " + dictlen + " " + repeated);
     if(count === dictlen && repeated === 0){
         valid=true;
         add_to_list(place);
