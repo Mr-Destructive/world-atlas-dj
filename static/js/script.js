@@ -62,7 +62,7 @@ coms = document.getElementById('tab');
 observer = new MutationObserver(function(mutationsList, observer) {
     complast = getLast(place);
     if(points > 0){
-    info.innerHTML = "Enter a Place beginning with : " + complast;
+    info.firstChild.nodeValue = "Enter a Place beginning with : " + complast;
     }
 });
 
@@ -137,11 +137,11 @@ function givePlace(letter)
         place = response["data"][letter];
         if(validate_comp(place)){
             rowcount+=1;
-            com.innerHTML = place;
+            com.appendChild(document.createTextNode(place));
             botlast=getLast(place);
             scroller();
             placeinp.disabled=false;
-            info.innerHTML="Enter a Place beginning with : " + botlast;
+            info.firstChild.nodeValue = "Enter a Place beginning with : " + botlast;
         }
         return place;
     })
