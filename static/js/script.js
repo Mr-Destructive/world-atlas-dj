@@ -130,7 +130,7 @@ function getLast(place)
 // random place generator for bot
 function givePlace(letter)
 {
-    let url = "https://world-atlas-api.herokuapp.com/get/"+letter;
+    let url = "https://djangonaut.pythonanywhere.com/world-atlas/api/places/get/"+letter+"/";
     axios.get(url) 
     .then(function (response)
     {
@@ -162,21 +162,15 @@ function validate(place, _callback)
     }
     let placelist = [];
     let exists = 0, repeated = 0, count = 0, last=0;
-    let url = "https://world-atlas-api.herokuapp.com/list/"+first;
+    let url = "https://djangonaut.pythonanywhere.com/world-atlas/api/places/exists/"+place;
     _callback(axios.get(url) 
     .then(function (response)
     {
-        placelist= response["data"][first];
+    is_valid = response.data["result"];
 
-    let len = placelist.length;
-
-    for(let i=0; i<len; i++)
+    if( is_valid )
     {
-        if( place == placelist[i] )
-        {
-            exists=1;
-            break;
-        }
+        exists=1;
     }
 
     let dict = [];
@@ -248,7 +242,7 @@ function validate(place, _callback)
         }
     }
     
-    if(exists === 1 && count === dictlen && repeated === 0 && last == 0){
+    if(exists == 1 && count == dictlen && repeated == 0 && last == 0){
         valid=true;
         add_to_list(place);
         placeinp.disabled=false;

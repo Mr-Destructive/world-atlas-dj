@@ -1,6 +1,5 @@
 from pathlib import Path
 from dotenv import load_dotenv
-import django_heroku
 import os
 
 load_dotenv()
@@ -13,6 +12,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '.herokuapp.com',
+    '127.0.0.1',
         ]
 
 INSTALLED_APPS = [
@@ -22,9 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home',
     'play',
-    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -97,6 +95,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT  = os.path.join(BASE_DIR, 'staticfiles')
-django_heroku.settings(locals())
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
