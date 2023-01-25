@@ -1,6 +1,8 @@
-{% extends 'home/index.html' %}
+{% extends 'index.html' %}
 {% load static %}
 
 {% block body %}
+<a href="{% url 'world-atlas-room-create' %}">Create Room</a>
+<a href="{% url 'world-atlas-room-join' %}">Join Room</a>
 <script src="{% static 'js/room.js' %}"></script>
 {% endblock %}

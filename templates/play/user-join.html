@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+{% block body %}
+    {% load static %}
+    <form method='post' action='{% url 'world-atlas-room-join' %}'>
+        {% csrf_token %}
+        <input name='room_name' id='room_name' placeholder='Room Name'>
+        <input type='submit' id="submit">
+    </form>
+    <div id='chat-text'>
+    </div>
+{% endblock %}
+

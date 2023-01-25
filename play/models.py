@@ -12,9 +12,8 @@ class Room(models.Model):
 
     name = models.CharField(max_length=128)
     slug = models.SlugField(unique=True)
-    match_details = JsonField()
 
-    def generate_random_turn(self):
+    def generate_random_turn():
         return random.randint(0,1)
 
     first_turn = models.IntegerField(blank=True, default=generate_random_turn)
