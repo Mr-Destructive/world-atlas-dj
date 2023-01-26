@@ -1,8 +1,18 @@
-from django.urls import path
+from django.urls import include, path
+from django.views.generic import TemplateView
+
+from rest_framework.routers import SimpleRouter
+
 from . import views
+
+router = SimpleRouter()
+router.register("places", views.PlaceViewSet)
+
 
 urlpatterns=[
         path('',views.home,name="home"),
+        path("api/", TemplateView.as_view(template_name='world-atlas-api.html')),
+        path("api/", include(router.urls), name='api'),
         path('play/',views.play,name="play"),
         path('bot/',views.bot,name="bot"),
         path('room/',views.multiplayer,name="world-atlas-room"),
